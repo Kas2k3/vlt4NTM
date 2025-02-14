@@ -55,15 +55,16 @@
         }
 
         .card::before {
-            content: '';
+            content: '❤️';
             position: absolute;
-            top: -50%;
-            left: -50%;
+            top: 110%;
+            left: 50%;
+            font-size: 24px;
+            color: #ff4081;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, #ff4081 10%, transparent 10.01%);
             background-size: 20px 20px;
-            animation: sparkle 2s linear infinite;
+            animation: floatHeart 5s linear infinite;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -81,13 +82,20 @@
             border-radius: 10px;
         }
 
-        @keyframes sparkle {
+        @keyframes floatHeart {
             0% {
-                transform: rotate(0deg);
+                transform: translate(-50%, 0) scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translate(-50%, -200px) scale(1.2);
+                opacity: 0.8;
             }
 
             100% {
-                transform: rotate(360deg);
+                transform: translate(-50%, -400px) scale(0.8);
+                opacity: 0;
             }
         }
     </style>
@@ -113,19 +121,25 @@
         </div>
     </div>
 
-    <audio id="clickSound" autoplay loop>
+    <audio id="background-audio" autoplay loop>
         <source src="sukidakara.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         function redirectToHeartPage() {
-            var audio = document.getElementById("clickSound");
-            audio.play();
-
-            setTimeout(function () {
-                window.location.href = "tym.html";
-            }, 500);
+            window.location.href = "tym.html";
         }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const audio = document.getElementById("background-audio");
+            if (audio.paused) {
+                document.body.addEventListener("click", function () {
+                    audio.play();
+                }, { once: true });
+            }
+        });
     </script>
 </body>
 

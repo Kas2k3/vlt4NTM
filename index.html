@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffebee;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .vlt {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .card {
+            width: 300px;
+            height: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h1 {
+            font-size: 32px;
+            color: #e91e63;
+            margin: 10px;
+        }
+
+        .card p {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 5px 0;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, #ff4081 10%, transparent 10.01%);
+            background-size: 20px 20px;
+            animation: sparkle 2s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card img {
+            width: 100px;
+            height: 150px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            margin-left: 10px;
+            border-radius: 10px;
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="card" onclick="redirectToHeartPage()">
+        <div>
+            <h1>Happy Valentine!!!</h1>
+            <div class="vlt">
+                <img src="https://img.freepik.com/free-photo/anime-stylecelebrating-valentines-day_23-2151257971.jpg?t=st=1739509148~exp=1739512748~hmac=41befb924ab69fb131a6b1ac75d713cecf140894068710fe16f7688dc1692202&w=360"
+                    alt="
+            Valentine Image">
+                <div>
+                    <p>Hé lu bebeee ná,</p>
+                    <p>Be ọiiii, Cũng như bao ngày khác, anh chỉ muốn nói rằng anh yêu be lắm ý ❤️</p>
+                    <p>Mong rằng thời gian tới bên nhau của chúng mình sẽ mãi luôn hạnh phúc như bây giờ nha be ^ ^</p>
+                    <br>
+                    <p>14/2, from Kas with luv ❤️</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="clickSound" autoplay loop>
+        <source src="sukidakara.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function redirectToHeartPage() {
+            var audio = document.getElementById("clickSound");
+            audio.play();
+
+            setTimeout(function () {
+                window.location.href = "tym.html";
+            }, 500);
+        }
+    </script>
+</body>
+
+</html>

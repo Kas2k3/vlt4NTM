@@ -60,6 +60,18 @@
     <audio id="background-audio" autoplay loop>
         <source src="aishiteru.mp3" type="audio/mpeg">
     </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const audio = document.getElementById("background-audio");
+            if (audio.paused) {
+                document.body.addEventListener("click", function () {
+                    audio.play();
+                }, { once: true });
+            }
+        });
+    </script>
+
     <script>
 
         var settings = {
